@@ -1,0 +1,84 @@
+/* Global reset and font */
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1A3B64;
+    padding: 15px 30px;
+    color: white;
+    font-size: 18px; /* Default font size */
+}
+
+/* Ensure the logo image scales appropriately */
+.navbar img {
+    height: auto;
+    max-height: 60px; /* Ensures the image fits within the navbar */
+}
+
+/* Styles for logo and its container */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Rounded corners for the logo image */
+.navbar .logo img {
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+/* Styles for navigation links */
+.navbar .links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 300; /* Thin font weight */
+    font-size: 16px; /* Default font size for links */
+    white-space: nowrap; /* Ensures links do not wrap */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 10px 20px; /* Adjust padding for medium-sized screens */
+        font-size: 14px; /* Decrease font size for medium-sized screens */
+    }
+
+    .navbar .links a {
+        font-size: 12px; /* Decrease font size for medium-sized screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Default font size for smaller screens */
+    }
+
+    .navbar .logo,
+    .navbar .links {
+        width: 100%; /* Ensure logo and links take full width */
+        text-align: center; /* Center align items */
+        margin-bottom: 10px; /* Space between logo/links and edge of navbar */
+    }
+
+    .navbar .links {
+        margin-top: 10px; /* Space between logo and links */
+    }
+
+    .navbar .links a {
+        margin: 5px; /* Adjust spacing between links */
+    }
+}
