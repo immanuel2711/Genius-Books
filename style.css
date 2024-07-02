@@ -13,6 +13,8 @@ body {
     padding: 15px 30px;
     color: white;
     font-size: 18px; /* Default font size */
+    position: relative; /* Ensure dropdown positions correctly */
+    z-index: 2; /* Ensure it is above other elements */
 }
 
 /* Ensure the logo image scales appropriately */
@@ -33,52 +35,245 @@ body {
     border-radius: 5px;
 }
 
-/* Styles for navigation links */
-.navbar .links {
+/* Desktop links */
+.desktop-links {
     display: flex;
     align-items: center;
 }
 
-.navbar .links a {
+.desktop-links a {
     color: white;
     text-decoration: none;
     margin-left: 25px;
     font-weight: 300; /* Thin font weight */
     font-size: 16px; /* Default font size for links */
-    white-space: nowrap; /* Ensures links do not wrap */
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 1024px) {
-    .navbar {
-        padding: 10px 20px; /* Adjust padding for medium-sized screens */
-        font-size: 14px; /* Decrease font size for medium-sized screens */
-    }
+/* Hamburger menu button */
+.menu-toggle {
+    display: none; /* Hide by default */
+}
 
-    .navbar .links a {
-        font-size: 12px; /* Decrease font size for medium-sized screens */
-    }
+.menu-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: transform 0.4s ease;
+}
+
+/* Mobile links container */
+.mobile-links {
+    display: none;
+    flex-direction: column;
+    background-color: #d9d9d9; /* Grey background */
+    padding: 10px 30px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1; /* Ensure it is above other elements */
+}
+
+.mobile-links.active {
+    display: flex; /* Show mobile links when active */
+}
+
+.mobile-links a {
+    color: black; /* Black text color */
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 0;
+    margin-left: 5px; /* Adjust left margin */
+}
+
+.mobile-links a + a {
+    border-top: 1px solid black; /* Add black top border between links */
 }
 
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
         padding: 10px; /* Adjust padding for smaller screens */
         font-size: 14px; /* Default font size for smaller screens */
     }
 
-    .navbar .logo,
-    .navbar .links {
-        width: 100%; /* Ensure logo and links take full width */
-        text-align: center; /* Center align items */
-        margin-bottom: 10px; /* Space between logo/links and edge of navbar */
+    .desktop-links {
+        display: none; /* Hide desktop links on smaller screens */
     }
 
-    .navbar .links {
-        margin-top: 10px; /* Space between logo and links */
+    .menu-toggle {
+        display: flex; /* Show hamburger menu button */
     }
 
-    .navbar .links a {
-        margin: 5px; /* Adjust spacing between links */
+    .mobile-links {
+        position: relative; /* Ensure it pushes content down */
+        top: 0; /* Reset top position */
+    }
+
+    .mobile-links a {
+        margin-left: 0; /* Reset margin to align left */
+    }
+}
+
+/* Hero section */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: #f4f4f4; /* Light background color */
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.hero-text h1 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.5;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 769px) {
+    .hero-text {
+        margin-top: -20px; /* Move the hero text up for desktop screens */
+    }
+    
+    .hero-text h1 {
+        font-size: 36px; /* Increase font size for desktop */
+    }
+}
+
+/* Who we are section */
+.who-we-are-section {
+    background-color: #ffffff; /* White background color */
+    font-size: 16px;
+    text-align: center; /* Center-align the text for both mobile and desktop */
+    padding: 40px; /* Default padding for both mobile and desktop */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    max-width: 800px; /* Limit max width for better centering */
+    margin: 0 auto; /* Center the section horizontally */
+}
+
+.who-we-are-section.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.who-we-are-section h2 {
+    font-size: 24px; /* Default font size for mobile */
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.who-we-are-section p {
+    font-size: 18px; /* Default font size for mobile */
+    font-weight: 400;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+    .who-we-are-section {
+        padding: 80px; /* Increase padding for desktop */
+    }
+
+    .who-we-are-section h2 {
+        font-size: 36px; /* Increase font size for desktop */
+    }
+
+    .who-we-are-section p {
+        font-size: 22px; /* Increase font size for desktop */
+    }
+}
+
+/* Mission section */
+.mission-section {
+    background-color: #1A3B64; /* Background color */
+    color: whitesmoke;
+    background-image: url('mission-bg.jpg'); /* Example background image */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the background image */
+    font-size: 16px;
+    text-align: center; /* Center-align the text for both mobile and desktop */
+    padding: 40px; /* Default padding for both mobile and desktop */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    width: 100vw; /* Ensure it covers the full width of the viewport */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.mission-section .content {
+    max-width: 800px; /* Limit max width for better centering */
+    margin: 0 auto; /* Center the content horizontally */
+}
+
+.mission-section.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mission-section h2 {
+    font-size: 24px; /* Default font size for mobile */
+    font-weight: 700;
+    color: whitesmoke;
+    margin-bottom: 20px;
+}
+
+.mission-section p {
+    font-size: 18px; /* Default font size for mobile */
+    font-weight: 400;
+    color: whitesmoke;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+    .mission-section {
+        padding: 80px; /* Increase padding for desktop */
+    }
+
+    .mission-section h2 {
+        font-size: 36px; /* Increase font size for desktop */
+    }
+
+    .mission-section p {
+        font-size: 22px; /* Increase font size for desktop */
     }
 }
