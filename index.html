@@ -14,9 +14,9 @@
             <span>Genius Books</span>
         </div>
         <div class="desktop-links">
-            <a href="#">Products</a>
+            <a href="#products">Products</a>
             <hr>
-            <a href="#">Contact Us</a>
+            <a href="#contact-us">Contact Us</a>
         </div>
         <div class="menu-toggle">
             <button id="toggle-btn" aria-label="Toggle navigation">
@@ -28,11 +28,11 @@
     </div>
 
     <div class="mobile-links">
-        <a href="#">
+        <a href="#products">
             Products
             <span class="arrow">→</span>
         </a>
-        <a href="#">
+        <a href="#contact-us">
             Contact Us
             <span class="arrow">→</span>
         </a>
@@ -47,17 +47,40 @@
         </div>
     </div>
 
-    <div class="who-we-are-section section">
+    <div id="who-we-are" class="who-we-are-section section">
         <h2>Who we are</h2>
         <p>We are a distinguished name in educational publishing, boasting a decade of expertise.</p>
         <p>We take pride in our longstanding relationships with esteemed educational institutions across Chennai and Tamil Nadu, where our materials are trusted to enhance learning experiences and outcomes.</p>
         <p>Our expert team established 111 titles across all subjects in our portfolio.</p>
     </div>
 
-    <div class="mission-section section">
+    <div id="mission" class="mission-section section">
         <h2>Our Mission</h2>
         <p>We remain dedicated to empower students and educators alike with exceptional resources tailored to meet the demand of modern education.</p>
         <p>With a focus on innovative content and exceptional design, our books aim to foster a love of learning and help students achieve their full potential.</p>
+    </div>
+    
+    <div id="products" class="products-section section">
+        <h2>Our Products</h2>
+        <p>Our focus spans from kindergarten to 12th grade, offering textbooks and supplementary materials meticulously crafted for CBSE and metric syllabus.</p>
+        <br>
+    </div>
+
+    <button class="explore-btn">Explore</button>
+
+    <!-- Contact Us Section -->
+    <div id="contact-us" class="contact-us-section section">
+        <h2>Contact Us</h2>
+        <form action="mailto:geniusbooks2016@gmail.com" method="post" enctype="text/plain">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <p>E-mail us: geniusbooks2016@gmail.com</p>
     </div>
 
     <script src="script.js"></script>
