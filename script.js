@@ -41,4 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Toggle mobile menu and change hamburger to cross
+    const toggleBtn = document.getElementById('toggle-btn');
+    const mobileLinks = document.getElementById('mobile-links');
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    toggleBtn.addEventListener('click', function() {
+        mobileLinks.classList.toggle('active');
+        menuToggle.classList.toggle('change');
+    });
 });
