@@ -19,4 +19,26 @@ document.addEventListener('DOMContentLoaded', function() {
     sections.forEach(section => {
         sectionObserver.observe(section);
     });
+
+    // Smooth scrolling to section when clicking on navbar links
+    const navbarLinks = document.querySelectorAll('.desktop-links a');
+
+    navbarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior (e.g., navigating to a new page)
+
+            const targetId = this.getAttribute('href').substring(1); // Get target section id
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                // Calculate offset to scroll to the section with some padding
+                const offsetTop = targetSection.offsetTop - 100; // Adjust as needed
+
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth' // Smooth scroll behavior
+                });
+            }
+        });
+    });
 });
