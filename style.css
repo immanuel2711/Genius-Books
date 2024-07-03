@@ -50,6 +50,22 @@ body {
     font-weight: 300; /* Thin font weight */
     font-size: 16px; /* Default font size for links */
 }
+.mobile-links {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.mobile-links a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.mobile-links.visible {
+    display: flex;
+}
 
 /* Hamburger menu button */
 .menu-toggle {
@@ -70,6 +86,17 @@ body {
     background-color: white;
     margin: 5px 0;
     transition: transform 0.4s ease;
+}
+.menu-toggle.change .bar1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.change .bar2 {
+    opacity: 0;
+}
+
+.menu-toggle.change .bar3 {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Mobile links container */
@@ -98,6 +125,8 @@ body {
 .mobile-links a + a {
     border-top: 1px solid black; /* Add black top border between links */
 }
+
+
 
 @media (max-width: 768px) {
     .navbar {
