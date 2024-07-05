@@ -2,16 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.section');
 
     const observerOptions = {
-        root: null, // Use the viewport as the root
+        root: null, 
         rootMargin: '0px',
-        threshold: 0.7 // Trigger when at least 70% of the section is visible
+        threshold: 0.7 
     };
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('section-visible');
-                observer.unobserve(entry.target); // Stop observing once the class is added
+                observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
@@ -20,29 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
         sectionObserver.observe(section);
     });
 
-    // Smooth scrolling to section when clicking on navbar links
     const navbarLinks = document.querySelectorAll('.desktop-links a');
 
     navbarLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent default link behavior (e.g., navigating to a new page)
+            e.preventDefault(); 
 
-            const targetId = this.getAttribute('href').substring(1); // Get target section id
+            const targetId = this.getAttribute('href').substring(1); 
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                // Calculate offset to scroll to the section with some padding
-                const offsetTop = targetSection.offsetTop - 100; // Adjust as needed
+                const offsetTop = targetSection.offsetTop - 100; 
 
                 window.scrollTo({
                     top: offsetTop,
-                    behavior: 'smooth' // Smooth scroll behavior
+                    behavior: 'smooth' 
                 });
             }
         });
     });
 
-    // Toggle mobile menu and change hamburger to cross
     const toggleBtn = document.getElementById('toggle-btn');
     const mobileLinks = document.getElementById('mobile-links');
     const menuToggle = document.querySelector('.menu-toggle');
@@ -51,4 +48,36 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileLinks.classList.toggle('active');
         menuToggle.classList.toggle('change');
     });
+
+    function updateBackground(swiper) {
+        const activeSlide = swiper.slides[swiper.activeIndex];
+        const gradient = activeSlide.dataset.gradient;
+        document.querySelector('.best-sellers').style.background = gradient;
+    }
+
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        centeredSlides: true,
+        loop: true,
+        spaceBetween: 10,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        on: {
+            slideChange: function() {
+                updateBackground(this);
+            }
+        }
+    });
+
+    updateBackground(swiper); // Set the initial background
 });
