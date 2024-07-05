@@ -12,15 +12,15 @@ body {
     background-color: #1A3B64;
     padding: 15px 30px;
     color: white;
-    font-size: 18px; /* Default font size */
-    position: relative; /* Ensure dropdown positions correctly */
-    z-index: 2; /* Ensure it is above other elements */
+    font-size: 18px;
+    position: relative;
+    z-index: 2;
 }
 
 /* Ensure the logo image scales appropriately */
 .navbar img {
     height: auto;
-    max-height: 60px; /* Ensures the image fits within the navbar */
+    max-height: 60px;
 }
 
 /* Styles for logo and its container */
@@ -40,36 +40,59 @@ body {
     display: flex;
     align-items: center;
 }
-.desktop-links a:hover {
-    color: #666; /* Change color on hover */
-}
+
 .desktop-links a {
     color: white;
     text-decoration: none;
     margin-left: 25px;
-    font-weight: 300; /* Thin font weight */
-    font-size: 16px; /* Default font size for links */
+    font-weight: 300;
+    font-size: 16px;
+    transition: color 0.3s ease, font-size 0.3s ease, transform 0.3s ease;
 }
+
+.desktop-links a:hover {
+    color: #666;
+    font-size: 18px;
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+/* Mobile links container */
 .mobile-links {
     display: none;
     flex-direction: column;
-    background-color: #333;
-    padding: 10px 20px;
+    background-color: #d9d9d9;
+    padding: 10px 30px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.mobile-links.active {
+    display: flex;
 }
 
 .mobile-links a {
-    color: white;
+    color: black;
     text-decoration: none;
-    margin-bottom: 10px;
+    font-size: 16px;
+    padding: 8px 0;
+    margin-left: 5px;
+    transition: color 0.3s ease, font-size 0.3s ease, transform 0.3s ease;
 }
 
-.mobile-links.visible {
-    display: flex;
+.mobile-links a:hover {
+    color: #666;
+    font-size: 18px;
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+.mobile-links a + a {
+    border-top: 1px solid black;
 }
 
 /* Hamburger menu button */
 .menu-toggle {
-    display: none; /* Hide by default */
+    display: none;
 }
 
 .menu-toggle button {
@@ -87,68 +110,28 @@ body {
     margin: 5px 0;
     transition: transform 0.4s ease;
 }
-.menu-toggle.change .bar1 {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle.change .bar2 {
-    opacity: 0;
-}
-
-.menu-toggle.change .bar3 {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Mobile links container */
-.mobile-links {
-    display: none;
-    flex-direction: column;
-    background-color: #d9d9d9; /* Grey background */
-    padding: 10px 30px;
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 1; /* Ensure it is above other elements */
-}
-
-.mobile-links.active {
-    display: flex; /* Show mobile links when active */
-}
-
-.mobile-links a {
-    color: black; /* Black text color */
-    text-decoration: none;
-    font-size: 16px;
-    padding: 8px 0;
-    margin-left: 5px; /* Adjust left margin */
-}
-
-.mobile-links a + a {
-    border-top: 1px solid black; /* Add black top border between links */
-}
-
-
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 10px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Default font size for smaller screens */
+        padding: 10px;
+        font-size: 14px;
     }
 
     .desktop-links {
-        display: none; /* Hide desktop links on smaller screens */
+        display: none;
     }
 
     .menu-toggle {
-        display: flex; /* Show hamburger menu button */
+        display: flex;
     }
 
     .mobile-links {
-        position: relative; /* Ensure it pushes content down */
-        top: 0; /* Reset top position */
+        position: relative;
+        top: 0;
     }
 
     .mobile-links a {
-        margin-left: 0; /* Reset margin to align left */
+        margin-left: 0;
     }
 }
 
@@ -158,7 +141,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 40px;
-    background-color: #f4f4f4; /* Light background color */
+    background-color: #f4f4f4;
 }
 
 .hero-text {
@@ -198,25 +181,25 @@ body {
 
 @media (min-width: 769px) {
     .hero-text {
-        margin-top: -20px; /* Move the hero text up for desktop screens */
+        margin-top: -20px;
     }
     
     .hero-text h1 {
-        font-size: 36px; /* Increase font size for desktop */
+        font-size: 36px;
     }
 }
 
 /* Who we are section */
 .who-we-are-section {
-    background-color: #ffffff; /* White background color */
+    background-color: #ffffff;
     font-size: 16px;
-    text-align: center; /* Center-align the text for both mobile and desktop */
-    padding: 40px; /* Default padding for both mobile and desktop */
+    text-align: center;
+    padding: 40px;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    max-width: 800px; /* Limit max width for better centering */
-    margin: 0 auto; /* Center the section horizontally */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .who-we-are-section.section-visible {
@@ -225,14 +208,14 @@ body {
 }
 
 .who-we-are-section h2 {
-    font-size: 24px; /* Default font size for mobile */
+    font-size: 24px;
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
 }
 
 .who-we-are-section p {
-    font-size: 18px; /* Default font size for mobile */
+    font-size: 18px;
     font-weight: 400;
     color: #666;
     line-height: 1.6;
@@ -241,38 +224,38 @@ body {
 
 @media (min-width: 769px) {
     .who-we-are-section {
-        padding: 80px; /* Increase padding for desktop */
+        padding: 80px;
     }
 
     .who-we-are-section h2 {
-        font-size: 36px; /* Increase font size for desktop */
+        font-size: 36px;
     }
 
     .who-we-are-section p {
-        font-size: 22px; /* Increase font size for desktop */
+        font-size: 22px;
     }
 }
 
 /* Mission section */
 .mission-section {
-    background-color: #1A3B64; /* Background color */
+    background-color: #1A3B64;
     color: whitesmoke;
-    background-image: url('mission-bg.jpg'); /* Example background image */
-    background-size: cover; /* Cover the entire section */
-    background-position: center; /* Center the background image */
+    background-image: url('mission-bg.jpg');
+    background-size: cover;
+    background-position: center;
     font-size: 16px;
-    text-align: center; /* Center-align the text for both mobile and desktop */
-    padding: 40px; /* Default padding for both mobile and desktop */
+    text-align: center;
+    padding: 40px;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    width: 100vw; /* Ensure it covers the full width of the viewport */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    width: 100vw;
+    box-sizing: border-box;
 }
 
 .mission-section .content {
-    max-width: 800px; /* Limit max width for better centering */
-    margin: 0 auto; /* Center the content horizontally */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .mission-section.section-visible {
@@ -281,14 +264,14 @@ body {
 }
 
 .mission-section h2 {
-    font-size: 24px; /* Default font size for mobile */
+    font-size: 24px;
     font-weight: 700;
     color: whitesmoke;
     margin-bottom: 20px;
 }
 
 .mission-section p {
-    font-size: 18px; /* Default font size for mobile */
+    font-size: 18px;
     font-weight: 400;
     color: whitesmoke;
     line-height: 1.6;
@@ -297,29 +280,29 @@ body {
 
 @media (min-width: 769px) {
     .mission-section {
-        padding: 80px; /* Increase padding for desktop */
+        padding: 80px;
     }
 
     .mission-section h2 {
-        font-size: 36px; /* Increase font size for desktop */
+        font-size: 36px;
     }
 
     .mission-section p {
-        font-size: 22px; /* Increase font size for desktop */
+        font-size: 22px;
     }
 }
 
 /* Products section */
 .products-section {
-    background-color: #ffffff; /* White background color */
+    background-color: #ffffff;
     font-size: 16px;
-    text-align: center; /* Center-align the text for both mobile and desktop */
-    padding: 40px; /* Default padding for both mobile and desktop */
+    text-align: center;
+    padding: 40px;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    max-width: 800px; /* Limit max width for better centering */
-    margin: 0 auto; /* Center the section horizontally */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .products-section.section-visible {
@@ -328,14 +311,14 @@ body {
 }
 
 .products-section h2 {
-    font-size: 24px; /* Default font size for mobile */
+    font-size: 24px;
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
 }
 
 .products-section p {
-    font-size: 18px; /* Default font size for mobile */
+    font-size: 18px;
     font-weight: 400;
     color: #666;
     line-height: 1.6;
@@ -344,15 +327,15 @@ body {
 
 @media (min-width: 769px) {
     .products-section {
-        padding: 80px; /* Increase padding for desktop */
+        padding: 80px;
     }
 
     .products-section h2 {
-        font-size: 36px; /* Increase font size for desktop */
+        font-size: 36px;
     }
 
     .products-section p {
-        font-size: 22px; /* Increase font size for desktop */
+        font-size: 22px;
     }
 }
 
@@ -362,50 +345,58 @@ body {
     border: 1px solid #556699;
     border-radius: 1000px;
     box-shadow: 0 1px #444444;
-    padding: 15px 30px; /* Reduced padding */
+    padding: 15px 30px;
     color: #ffffff;
     display: inline-block;
-    font: normal normal 20px/1 "Calibri", sans-serif; /* Reduced font size */
+    font: normal normal 20px/1 "Calibri", sans-serif;
     text-align: center;
-    margin: 20px auto; /* Center the button horizontally */
-    display: block; /* Make the button block-level element */
+    margin: 20px auto;
+    display: block;
+    transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+}
+
+.explore-btn:hover {
+    background-color: #2a4b84;
+    transform: scale(1.1);
+    font-size: 22px;
 }
 
 @media (max-width: 768px) {
     .explore-btn {
-        padding: 10px 20px; /* Further reduce padding for smaller screens */
-        font-size: 18px; /* Further reduce font size for smaller screens */
+        padding: 10px 20px;
+        font-size: 18px;
     }
 }
+
 /* Contact Us Section */
 .contact-us-section {
-    background-color: #1A3B64; /* Blue background color */
-    color: white; /* White text color */
+    background-color: #1A3B64;
+    color: white;
     font-size: 16px;
     padding: 40px;
-    width: 100%; /* Ensure it covers the full width */
+    width: 100%;
     box-sizing: border-box;
 }
 
 .contact-us-section h2 {
-    font-size: 24px; /* Font size */
+    font-size: 24px;
     font-weight: 700;
-    color: white; /* White text color */
-    text-align: center; /* Center-align the "Contact Us" text */
+    color: white;
+    text-align: center;
     margin-bottom: 20px;
 }
 
 .contact-us-section form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
-    margin-left: 0; /* Align form to the left */
+    align-items: flex-start;
+    margin-left: 0;
 }
 
 .contact-us-section form label {
-    font-size: 18px; /* Font size */
+    font-size: 18px;
     font-weight: 400;
-    color: white; /* White text color */
+    color: white;
     margin-bottom: 5px;
 }
 
@@ -423,39 +414,41 @@ body {
 .contact-us-section form button {
     width: 150px;
     padding: 10px;
-    background-color: grey; /* Slightly darker blue background color */
-    color: black; /* White text color */
+    background-color: grey;
+    color: black;
     font-size: 16px;
     font-weight: 700;
     text-align: center;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
 }
 
 .contact-us-section form button:hover {
-    background-color: whitesmoke; /* Darker blue background color on hover */
+    background-color: whitesmoke;
+    transform: scale(1.1);
+    font-size: 18px;
 }
 
 .contact-us-section p {
-    font-size: 16px; /* Font size */
+    font-size: 16px;
     font-weight: 400;
-    color: white; /* White text color */
-    text-align: center; /* Center-align the email text */
+    color: white;
+    text-align: center;
     margin-top: 20px;
 }
 
 @media (min-width: 769px) {
     .contact-us-section {
-        padding: 60px; /* Increase padding for desktop */
+        padding: 60px;
     }
 
     .contact-us-section h2 {
-        font-size: 32px; /* Increase font size for desktop */
+        font-size: 32px;
     }
 
     .contact-us-section p {
-        font-size: 20px; /* Increase font size for desktop */
+        font-size: 20px;
     }
 }
