@@ -232,25 +232,46 @@ body {
     background: black;
 }
 .discover-by-subjects {
-    background-color: #e0e0e0;
+    background-color: white;
     padding: 20px;
-    margin: 20px 0;
+    margin: 20px 10px; /* Adjusted margin */
+    text-align: left; /* Align text to the left */
+    max-width: fit-content; /* Set maximum width to fit content */
+    margin-left: 1cm; /* Move towards the left margin */
+     /* Center align the section */
+    border-radius: 10px; /* Add border-radius for rounded corners */
 }
 
 .discover-by-subjects h2 {
-    margin-bottom: 20px;
-    background-color: #1A3B64 ;
+    background-color: #1A3B64;
     color: white;
     padding: 10px;
-    text-align: center;
+    margin-bottom: 10px; /* Add margin below heading */
+    border-top-left-radius: 10px; /* Rounded corners for the top left */
+    border-top-right-radius: 10px; /* Rounded corners for the top right */
 }
 
 .discover-by-subjects ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    background-color: darkgrey; /* Grey background color for list */
+    padding: 10px;
+    border-bottom-left-radius: 10px; /* Rounded corners for the bottom left */
+    border-bottom-right-radius: 10px; /* Rounded corners for the bottom right */
 }
 
-.discover-by-subjects ul li {
-    padding: 10px 0;
+.discover-by-subjects li {
     font-size: 18px;
+    padding: 8px 0; /* Adjusted padding */
+}
+
+.discover-by-subjects a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.discover-by-subjects a:hover {
+    color: #666;
 }
