@@ -231,3 +231,26 @@ body {
 .swiper-pagination-bullet-active {
     background: black;
 }
+.discover-by-subjects {
+    background-color: #e0e0e0;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.discover-by-subjects h2 {
+    margin-bottom: 20px;
+    background-color: #1A3B64 ;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.discover-by-subjects ul {
+    list-style: none;
+    padding: 0;
+}
+
+.discover-by-subjects ul li {
+    padding: 10px 0;
+    font-size: 18px;
+}
