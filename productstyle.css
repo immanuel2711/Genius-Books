@@ -35,16 +35,18 @@ body {
     align-items: center;
 }
 
-.desktop-links a:hover {
-    color: #666;
-}
-
 .desktop-links a {
     color: white;
     text-decoration: none;
     margin-left: 25px;
     font-weight: 300;
     font-size: 16px;
+    transition: color 0.3s ease, font-size 0.3s ease; /* Add transition for smooth color change and resizing */
+}
+
+.desktop-links a:hover {
+    color: #666;
+    font-size: 18px; /* Increase font size on hover */
 }
 
 .menu-toggle {
@@ -87,10 +89,16 @@ body {
     font-size: 16px;
     padding: 8px 0;
     margin-left: 5px;
+    transition: color 0.3s ease, font-size 0.3s ease; /* Add transition for smooth color change and resizing */
 }
 
 .mobile-links a + a {
     border-top: 1px solid black;
+}
+
+.mobile-links a:hover {
+    color: #666;
+    font-size: 18px; /* Increase font size on hover */
 }
 
 @media (max-width: 768px) {
@@ -126,7 +134,8 @@ body {
 .best-sellers h2 {
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 50px; /* Increase space between text and images */
+    margin-bottom: 50px;
+    color: black;
 }
 
 .swiper-container {
@@ -154,23 +163,77 @@ body {
 }
 
 .swiper-button-next, .swiper-button-prev {
-    color: #000;
+    width: 40px;
+    height: 40px;
+    background-color: #1A3B64;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+    transition: width 0.3s ease, height 0.3s ease; /* Add transition for smooth resizing */
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.swiper-button-next:after {
+    border-width: 6px 0 6px 10px;
+    border-color: transparent transparent transparent white;
+    margin-left: 2px;
+}
+
+.swiper-button-prev:after {
+    border-width: 6px 10px 6px 0;
+    border-color: transparent white transparent transparent;
+    margin-right: 2px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    width: 50px;
+    height: 50px;
 }
 
 .swiper-pagination {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-top: 20px; /* Gap between images and pagination */
 }
 
 .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    background: #000;
-    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+    background: grey;
     border-radius: 50%;
-    transition: opacity 0.3s;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
-    opacity: 1;
+    background: darkgrey;
 }
