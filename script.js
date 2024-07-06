@@ -2,16 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.section');
 
     const observerOptions = {
-        root: null, 
+        root: null,
         rootMargin: '0px',
-        threshold: 0.7 
+        threshold: 0.7
     };
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('section-visible');
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -24,18 +24,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     navbarLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault(); 
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith('#')) { // Only prevent default for internal links
+                e.preventDefault();
+                const targetSection = document.getElementById(targetId.substring(1));
 
-            const targetId = this.getAttribute('href').substring(1); 
-            const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 100;
 
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 100; 
-
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth' 
-                });
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
@@ -49,10 +50,51 @@ document.addEventListener('DOMContentLoaded', function() {
         menuToggle.classList.toggle('change');
     });
 
+    function getDominantColor(imageElement, callback) {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = imageElement.width;
+        canvas.height = imageElement.height;
+        context.drawImage(imageElement, 0, 0, canvas.width, canvas.height);
+
+        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        const length = data.length;
+        const colorCounts = {};
+        let dominantColor = { color: [0, 0, 0], count: 0 };
+
+        for (let i = 0; i < length; i += 4) {
+            const color = `${data[i]},${data[i + 1]},${data[i + 2]}`;
+            if (!colorCounts[color]) {
+                colorCounts[color] = 0;
+            }
+            colorCounts[color]++;
+            if (colorCounts[color] > dominantColor.count) {
+                dominantColor = { color: color.split(','), count: colorCounts[color] };
+            }
+        }
+        callback(dominantColor.color);
+    }
+
+    function getComplementaryColor(rgb) {
+        const r = 255 - rgb[0];
+        const g = 255 - rgb[1];
+        const b = 255 - rgb[2];
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
     function updateBackground(swiper) {
         const activeSlide = swiper.slides[swiper.activeIndex];
-        const gradient = activeSlide.dataset.gradient;
-        document.querySelector('.best-sellers').style.background = gradient;
+        const imgElement = activeSlide.querySelector('img');
+
+        if (imgElement) {
+            getDominantColor(imgElement, dominantColor => {
+                const dominantColorString = `rgb(${dominantColor.join(',')})`;
+                const complementaryColor = getComplementaryColor(dominantColor);
+                const gradient = `linear-gradient(to right, ${dominantColorString}, ${complementaryColor})`;
+                document.querySelector('.best-sellers').style.background = gradient;
+            });
+        }
     }
 
     const swiper = new Swiper('.swiper-container', {
@@ -72,6 +114,24 @@ document.addEventListener('DOMContentLoaded', function() {
             el: '.swiper-pagination',
             clickable: true,
         },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+            },
+        },
         on: {
             slideChange: function() {
                 updateBackground(this);
@@ -79,5 +139,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    updateBackground(swiper); // Set the initial background
+    updateBackground(swiper);
+
+    const exploreBtn = document.querySelector('.explore-btn');
+    if (exploreBtn) {
+        exploreBtn.addEventListener('click', function() {
+            window.location.href = 'products.html';
+        });
+    }
 });
