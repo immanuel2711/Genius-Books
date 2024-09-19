@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'products.html';
         });
     }
+<<<<<<< HEAD
 
     const links = document.querySelectorAll('.discover-by-subjects a');
     const subjectImagesContainer = document.getElementById('subject-images');
@@ -167,4 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+=======
+>>>>>>> cfd327c6df727cfc8939501819f33924e4e44b47
 });
